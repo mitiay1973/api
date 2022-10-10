@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43782bef45964f8d97c8e1a3673dd565" Name="Diagram1">
+      <Diagram DiagramId="a315e363a83d4d70a222331d63d96907" Name="Diagram1">
         <EntityTypeShape EntityType="Sfera_IT_PPModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Sfera_IT_PPModel.active_user" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Sfera_IT_PPModel.admin" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />

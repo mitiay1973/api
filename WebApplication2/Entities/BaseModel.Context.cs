@@ -13,10 +13,10 @@ namespace WebApplication2.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Sfera_IT_PPEntities1 : DbContext
+    public partial class Sfera_IT_PPEntities3 : DbContext
     {
-        public Sfera_IT_PPEntities1()
-            : base("name=Sfera_IT_PPEntities1")
+        public Sfera_IT_PPEntities3()
+            : base("name=Sfera_IT_PPEntities3")
         {
         }
     

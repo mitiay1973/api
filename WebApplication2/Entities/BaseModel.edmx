@@ -344,7 +344,7 @@
           <Property Name="zena" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="Sfera_IT_PPEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Sfera_IT_PPEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="active_user" EntityType="Self.active_user" />
           <EntitySet Name="admin" EntityType="Self.admin" />
@@ -363,7 +363,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Sfera_IT_PPModelContainer" CdmEntityContainer="Sfera_IT_PPEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Sfera_IT_PPModelContainer" CdmEntityContainer="Sfera_IT_PPEntities3">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Sfera_IT_PPModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
