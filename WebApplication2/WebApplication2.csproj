@@ -231,8 +231,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Entities\BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseModel.edmx</DependentUpon>
       <LastGenOutput>BaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>BaseModel.edmx</DependentUpon>
     </Content>
     <Content Include="Entities\BaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
