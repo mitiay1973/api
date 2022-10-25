@@ -21,6 +21,6 @@ namespace WebApplication2.Models
         public string user { get; set; }
         public string konfiguracia { get; set; }
         public int zena { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
     }
 }
