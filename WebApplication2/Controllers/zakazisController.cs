@@ -15,7 +15,7 @@ namespace WebApplication2.Controllers
 {
     public class zakazisController : ApiController
     {
-        private Sfera_IT_PPEntities4 db = new Sfera_IT_PPEntities4();
+        private Sfera_IT_PPEntities db = new Sfera_IT_PPEntities();
 
         // GET: api/zakazis
         [ResponseType(typeof(List<ZakaziModel>))]

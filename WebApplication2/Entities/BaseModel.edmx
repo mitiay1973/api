@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище Sfera_IT_PPModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Sfera_IT_PPModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "Sfera_IT_PP.dbo.active_user" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="active_user">
@@ -125,8 +125,6 @@
           <Property Name="user" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Sfera_IT_PP.dbo.zakazi" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="zakazi">
           <Key>
             <PropertyRef Name="id_zakaza" />
@@ -135,10 +133,11 @@
           <Property Name="user" Type="nvarchar" MaxLength="50" />
           <Property Name="konfiguracia" Type="nvarchar" MaxLength="50" />
           <Property Name="zena" Type="int" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="Хранилище Sfera_IT_PPModelContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zakazi" EntityType="Self.zakazi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="active_user" EntityType="Self.active_user" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [active_user].[id_active_user] AS [id_active_user], 
@@ -219,17 +218,9 @@
     [users].[password] AS [password]
     FROM [dbo].[users] AS [users]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="zakazi" EntityType="Self.zakazi" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [zakazi].[id_zakaza] AS [id_zakaza], 
-    [zakazi].[user] AS [user], 
-    [zakazi].[konfiguracia] AS [konfiguracia], 
-    [zakazi].[zena] AS [zena], 
-    [zakazi].[Image] AS [Image]
-    FROM [dbo].[zakazi] AS [zakazi]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Sfera_IT_PPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -242,6 +233,16 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="zakazi">
+          <Key>
+            <PropertyRef Name="id_zakaza" />
+          </Key>
+          <Property Name="id_zakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="konfiguracia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zena" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="active_user">
           <Key>
@@ -333,18 +334,9 @@
           <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="zakazi">
-          <Key>
-            <PropertyRef Name="id_zakaza" />
-          </Key>
-          <Property Name="id_zakaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="konfiguracia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="zena" Type="Int32" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityContainer Name="Sfera_IT_PPEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Sfera_IT_PPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="zakazi" EntityType="Self.zakazi" />
           <EntitySet Name="active_user" EntityType="Self.active_user" />
           <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="glavnaya" EntityType="Self.glavnaya" />
@@ -355,14 +347,13 @@
           <EntitySet Name="licensii4" EntityType="Self.licensii4" />
           <EntitySet Name="licensii5" EntityType="Self.licensii5" />
           <EntitySet Name="users" EntityType="Self.users" />
-          <EntitySet Name="zakazi" EntityType="Self.zakazi" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Sfera_IT_PPModelContainer" CdmEntityContainer="Sfera_IT_PPEntities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Sfera_IT_PPModelContainer" CdmEntityContainer="Sfera_IT_PPEntities">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Sfera_IT_PPModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -371,6 +362,17 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zakazi">
+            <EntityTypeMapping TypeName="Sfera_IT_PPModel.zakazi">
+              <MappingFragment StoreEntitySet="zakazi">
+                <ScalarProperty Name="id_zakaza" ColumnName="id_zakaza" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="konfiguracia" ColumnName="konfiguracia" />
+                <ScalarProperty Name="zena" ColumnName="zena" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -471,17 +473,6 @@
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="user" ColumnName="user" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="zakazi">
-            <EntityTypeMapping TypeName="Sfera_IT_PPModel.zakazi">
-              <MappingFragment StoreEntitySet="zakazi">
-                <ScalarProperty Name="id_zakaza" ColumnName="id_zakaza" />
-                <ScalarProperty Name="user" ColumnName="user" />
-                <ScalarProperty Name="konfiguracia" ColumnName="konfiguracia" />
-                <ScalarProperty Name="zena" ColumnName="zena" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

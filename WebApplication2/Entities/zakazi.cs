@@ -18,6 +18,6 @@ namespace WebApplication2.Entities
         public string user { get; set; }
         public string konfiguracia { get; set; }
         public Nullable<int> zena { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
     }
 }

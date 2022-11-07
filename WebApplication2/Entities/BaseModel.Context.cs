@@ -13,10 +13,10 @@ namespace WebApplication2.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Sfera_IT_PPEntities4 : DbContext
+    public partial class Sfera_IT_PPEntities : DbContext
     {
-        public Sfera_IT_PPEntities4()
-            : base("name=Sfera_IT_PPEntities4")
+        public Sfera_IT_PPEntities()
+            : base("name=Sfera_IT_PPEntities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace WebApplication2.Entities
         }
     
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<zakazi> zakazi { get; set; }
         public virtual DbSet<active_user> active_user { get; set; }
         public virtual DbSet<admin> admin { get; set; }
         public virtual DbSet<glavnaya> glavnaya { get; set; }
@@ -36,6 +37,5 @@ namespace WebApplication2.Entities
         public virtual DbSet<licensii4> licensii4 { get; set; }
         public virtual DbSet<licensii5> licensii5 { get; set; }
         public virtual DbSet<users> users { get; set; }
-        public virtual DbSet<zakazi> zakazi { get; set; }
     }
 }
